@@ -16,7 +16,7 @@ Department of Computer Science and Engineering (DISI),
 </div>
 
  <div style="text-align:center;font-size:30px;">
- <span style="color:red">Code coming soon!</span>
+ <font color="red">Code coming soon!</font>
 </div>
 
 <div class="alert alert-info">
@@ -84,7 +84,7 @@ GO-SLAM consists of three parallel threads: **front-end tracking**, **back-end t
 
 ## :memo: Code
 
-<span style="color:red;">The code will be available soon!</span>
+<font color="red">The code will be available soon!</font>
 
 
 ## :art: Qualitative Results
