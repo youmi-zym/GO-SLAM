@@ -1,6 +1,6 @@
 
 
-<h1 align="center"> GO-SLAM <br>Global Optimization for Consistent 3D Instant Reconstruction (ICCV 2023) </h1> 
+<h1 align="center"> GO-SLAM <br>Global Optimization for Consistent 3D Instant Reconstruction <br> (ICCV 2023) </h1> 
 
 
 :rotating_light: This repository contains the code and trained models of our work  "**GO-SLAM: Global Optimization for Consistent 3D Instant Reconstruction**",  [ICCV 2023](https://iccv2023.thecvf.com/)
