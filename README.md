@@ -4,20 +4,16 @@
 
 
 :rotating_light: This repository contains the code and trained models of our work  "**GO-SLAM: Global Optimization for Consistent 3D Instant Reconstruction**",  [ICCV 2023](https://iccv2023.thecvf.com/)
-
-**Note**: 🚧 Kindly note that this repository is currently in the development phase.
-
 by [Youmin Zhang](https://youmi-zym.github.io/), [Fabio Tosi](https://fabiotosi92.github.io/), [Stefano Mattoccia](http://www.vision.disi.unibo.it/smatt/) and [Matteo Poggi](https://mattpoggi.github.io/)
 
 Department of Computer Science and Engineering (DISI),
- University of Bologna
+University of Bologna
 
+
+**Note**: 🚧 Kindly note that this repository is currently in the development phase.
 
 <h4 align="center">
-
-
 <ins>Code coming soon! </ins>
-
 </h4>
 
 <div class="alert alert-info">
@@ -74,7 +70,7 @@ GO-SLAM consists of three parallel threads: **front-end tracking**, **back-end t
 :fountain_pen: If you find this code useful in your research, please cite:
 
 ```bibtex
-@inproceedings{zhang2022goslam,
+@inproceedings{zhang2023goslam,
     author    = {Zhang, Youmin and Tosi, Fabio and Mattoccia, Stefano and Poggi, Matteo},
     title     = {GO-SLAM: Global Optimization for Consistent 3D Instant Reconstruction},
     booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
