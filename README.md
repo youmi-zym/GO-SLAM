@@ -21,7 +21,7 @@ University of Bologna
 
 <h2 align="center"> 
 
-[Project Page](https://youmi-zym.github.io/projects/GO-SLAM/) | [Paper]() |  [Supplementary]() 
+[Project Page](https://youmi-zym.github.io/projects/GO-SLAM/) | [Paper & Supplementary](https://arxiv.org/pdf/2309.02436.pdf) 
 </h2>
 
 
