@@ -1,0 +1,52 @@
+verbose: False
+dataset: 'replica'
+mode: 'rgbd'
+stride: 1
+mapping:
+  device: "cuda:0"
+
+tracking:
+  device: "cuda:0"
+  buffer: 250
+  beta: 0.75
+  warmup: 12
+  upsample: True
+  motion_filter:
+    thresh: 4.0  # add as keyframe if avg flow >= 4.0 pixels
+  multiview_filter:
+    thresh: 0.01  # dpeth error < 0.01m
+    visible_num: 2  # points viewed by at least 2 cameras
+    kernel_size: inf
+    bound_enlarge_scale: 1.20
+  frontend:
+    radius: 1
+    nms: 0
+    thresh: 25.0  # only consider edge with avg flow < 25.0 pixels
+
+cam:
+  ### original camera parameters
+  H: 680
+  W: 1200
+  fx: 600.0
+  fy: 600.0
+  cx: 599.5
+  cy: 339.5
+  png_depth_scale: 6553.5 #for depth image in png format
+  ### target/output camera settings, camera_size -> resize -> crop -> target_size
+  H_edge: 0
+  W_edge: 0
+  H_out: 320
+  W_out: 640
+
+rendering:
+  N_samples: 24
+  N_surface: 48
+
+meshing:
+  eval_rec: True
+  resolution: 512  # change to 512 for higher resolution geometry
+  get_largest_components: False
+  remove_small_geometry_threshold: 0.2
+  n_points_to_eval: 200000
+  mesh_threshold_to_eval: 0.05
+  forecast_radius: 25

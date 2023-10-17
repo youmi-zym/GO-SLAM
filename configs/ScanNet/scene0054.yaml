@@ -1,0 +1,16 @@
+inherit_from: ./configs/ScanNet/scannet.yaml
+mode: rgbd
+mapping:
+  device: "cuda:0"
+  bound: [[-3.0, 8.0], [-2.0, 5.0], [-8.0, 4.0]]
+
+tracking:
+  frontend:
+    enable_loop: True
+
+meshing:
+  gt_mesh_path: '/home/yzhang/data/ScanNet/scans/scene0054_00/scene0054_00_vh_clean.ply'
+
+data:
+  input_folder: /home/yzhang/data/ScanNet/scans/scene0054_00
+  output: /home/yzhang/exps/goslam/scannet/0054/rgbd

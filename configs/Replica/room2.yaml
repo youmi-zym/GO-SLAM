@@ -1,0 +1,9 @@
+inherit_from: configs/Replica/replica.yaml
+mode: rgbd
+mapping:
+  bound: [[-5.0, 5.0], [-5.0, 5.0], [-5.0, 5.0]]
+meshing:
+  gt_mesh_path: /home/yzhang/data/Replica/cull_replica_meshv2/room2.ply
+data:
+  input_folder: /home/yzhang/data/Replica/room2
+  output: /home/yzhang/exps/goslam/Replica/room2/rgbdv2

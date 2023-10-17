@@ -1,0 +1,70 @@
+sync_method: strict
+verbose: False
+dataset: 'scannet'
+mode: mono
+stride: 1
+only_tracking: False
+
+mapping:
+  device: "cuda:0"
+  BA: False
+  BA_cam_lr: 0.001
+
+tracking:
+  device: "cuda:0"
+  buffer: 512
+  beta: 0.75
+  warmup: 12
+  upsample: True
+  motion_filter:
+    thresh: 4.0  # add as keyframe if avg flow >= 4.0 pixels
+  multiview_filter:
+    thresh: 0.01  # dpeth error < 0.01m
+    visible_num: 2  # points viewed by at least 2 cameras
+    kernel_size: inf
+    bound_enlarge_scale: 1.44
+  frontend:
+    enable_loop: True
+    keyframe_thresh: 4.0  # remove keyframe if avg flow < 4.0 pixels
+    thresh: 16.0  # only consider edge with avg flow < 16.0 pixels
+    window: 50  # local ba window size
+    radius: 2
+    nms: 0
+    max_factors: 100  # num of edges within local ba
+  backend:
+    thresh: 25.0  # only consider edge with avg flow < 25.0 pixels
+    radius: 1
+    nms: 5
+    # used for loop detection
+    loop_window: 50
+    loop_thresh: 25.0  # only consider edge with avg flow < 50.0 pixels
+    loop_radius: 1
+    loop_nms: 25
+
+cam:
+  ### original camera parameters
+  H: 480
+  W: 640
+  fx: 577.590698
+  fy: 578.729797
+  cx: 318.905426
+  cy: 242.683609
+  png_depth_scale: 1000.0 #for depth image in png format
+  ### target/output camera settings, camera_size -> resize -> crop -> target_size
+  H_edge: 8
+  W_edge: 16
+  H_out: 240
+  W_out: 320
+
+rendering:
+  N_samples: 24
+  N_surface: 48
+
+meshing:
+  eval_rec: True
+  resolution: 1024  # change to 512 for higher resolution geometry
+  get_largest_components: False
+  remove_small_geometry_threshold: 0.2
+  n_points_to_eval: 200000
+  mesh_threshold_to_eval: 0.05
+  forecast_radius: 25

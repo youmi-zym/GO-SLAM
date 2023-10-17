@@ -1,0 +1,12 @@
+inherit_from: ./configs/ScanNet/scannet.yaml
+mode: rgbd
+mapping:
+  device: "cuda:0"
+  bound: [[-4, 5], [-4, 4], [-6, 7]]
+
+meshing:
+  gt_mesh_path: '/home/yzhang/data/ScanNet/scans/scene0233_00/scene0233_00_vh_clean.ply'
+
+data:
+  input_folder: /home/yzhang/data/ScanNet/scans/scene0233_00
+  output: /home/yzhang/exps/goslam/scannet/0233/rgbd

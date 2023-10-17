@@ -14,7 +14,7 @@ University of Bologna
 **Note**: 🚧 Kindly note that this repository is currently in the development phase.
 
 <h4 align="center">
-<ins>Code coming soon! </ins>
+<ins>Code is available now, enjoy! </ins>
 </h4>
 
 <div class="alert alert-info">
@@ -82,8 +82,84 @@ GO-SLAM consists of three parallel threads: **front-end tracking**, **back-end t
 
 ## :memo: Code
 
-<ins>The code will be available soon!</ins>
+You can create an anaconda environment called `go-slam`. For linux, you need to install **libopenexr-dev** before creating the environment.
+```bash
+sudo apt-get install libopenexr-dev
+    
+conda env create -f environment.yaml
+conda activate go-slam
 
+pip install git+https://github.com/NVlabs/tiny-cuda-nn/#subdirectory=bindings/torch
+pip install evo --upgrade --no-binary evo
+
+python setup.py install
+
+```
+
+### Replica
+
+Download the data from [Google Drive](https://drive.google.com/drive/folders/1RJr38jvmuIV717PCEcBkzV2qkqUua-Fx?usp=sharing), and then you can run:
+
+```bash
+# please modify the OUT_DIR firstly in the script
+# MODE can be [rgbd, mono], EXP_NAME is the experimental name you want
+
+./evaluate_on_replica.sh MODE EXP_NAME
+
+# for example
+
+./evaluate_on_replica.sh rgbd first_try
+
+```
+
+Mesh and corresponding evaluated metrics are available in OUT_DIR
+
+
+### ScanNet
+Please follow the data downloading procedure on [ScanNet](http://www.scan-net.org/) website, and extract color/depth frames from the `.sens` file using this [code](https://github.com/ScanNet/ScanNet/blob/master/SensReader/python/reader.py).
+
+<details>
+  <summary>[Directory structure of ScanNet (click to expand)]</summary>
+  
+  DATAROOT is `./Datasets` by default. If a sequence (`sceneXXXX_XX`) is stored in other places, please change the `input_folder` path in the config file or in the command line.
+
+```
+  DATAROOT
+  └── scannet
+      └── scans
+          └── scene0000_00
+              └── frames
+                  ├── color
+                  │   ├── 0.jpg
+                  │   ├── 1.jpg
+                  │   ├── ...
+                  │   └── ...
+                  ├── depth
+                  │   ├── 0.png
+                  │   ├── 1.png
+                  │   ├── ...
+                  │   └── ...
+                  ├── intrinsic
+                  └── pose
+                      ├── 0.txt
+                      ├── 1.txt
+                      ├── ...
+                      └── ...
+
+```
+</details>
+
+Once the data is downloaded and set up properly, you can run:
+```bash
+# please modify the OUT_DIR firstly in the script
+# MODE can be [rgbd, mono], EXP_NAME is the experimental name you want
+
+./evaluate_on_scannet.sh MODE EXP_NAME
+
+# for example
+
+./evaluate_on_scannet.sh rgbd first_try
+```
 
 ## :art: Qualitative Results
 
@@ -118,3 +194,5 @@ For questions, please send an email to youmin.zhang2@unibo.it, fabio.tosi5@unibo
 ## :pray: Acknowledgements
 
 We sincerely thank the scholarship supported by China Scholarship Council (CSC). 
+
+We adapted some codes from some awesome repositories including [NICE-SLAM](https://github.com/cvg/nice-slam), [NeuS](https://github.com/Totoro97/NeuS) and [DROID-SLAM](https://github.com/princeton-vl/DROID-SLAM).

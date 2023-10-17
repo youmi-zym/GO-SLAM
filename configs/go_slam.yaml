@@ -1,0 +1,112 @@
+sync_method: strict
+verbose: True
+dataset: ''
+mode: ''  # 'mono', 'stereo', 'rgbd'
+stride: 1
+only_tracking: False
+
+mapping:
+  device: "cuda:0"
+  BA: False
+  BA_cam_lr: 0.001
+  net_lr: 0.001
+  grid_lr: 0.01
+  w_color_loss: 2.0
+  w_sdf_smooth_loss: 1.0
+  w_sdf_loss: 2.0
+  w_eikonal_loss: 0.1
+  uncertainty_weight_loss: True
+  mapping_window_size: 22
+  pixels: 4400
+  iters: 2
+  post_processing_iters: 10
+  decay: 0.8
+  model:
+    sdf_smooth_std: 0.005
+    sdf_sparse_factor: 5
+    sdf_truncation: 0.16
+    sdf_random_weight: 0.04
+
+    sdf_network:
+      d_in: 3
+      d_out: 32  # remember also modify the d_feat in color_network
+
+    color_network:
+      d_in: 3
+      d_feat: 31  # d_out-1 in sdf_network
+      d_hidden: 64
+      n_layers: 2
+
+    variance_network:
+      init_val: 0.2
+      scale_factor: 10.0
+
+tracking:
+  device: "cuda:0"
+  pretrained: ./pretrained/droid.pth
+  buffer: 512
+  beta: 0.75  # beta * Distance(R|t) + (1-beta) * Distance(I|t), refer to droid_kernels.cu:frame_distance_kernel
+  warmup: 8
+  upsample: True
+  motion_filter:
+    thresh: 4.0  # add as keyframe if avg flow >= 4.0 pixels
+  multiview_filter:
+    thresh: 0.01  # dpeth error < 0.01m
+    visible_num: 2  # points viewed by at least 2 cameras
+    kernel_size: 1
+    bound_enlarge_scale: 1.10
+  frontend:
+    enable_loop: True
+    keyframe_thresh: 4.0  # remove keyframe if avg flow < 4.0 pixels
+    thresh: 16.0  # only consider edge with avg flow < 16.0 pixels
+    window: 25  # local ba window size
+    radius: 1
+    nms: 1
+    max_factors: 75  # num of edges within local ba
+  backend:
+    thresh: 25.0  # only consider edge with avg flow < 25.0 pixels
+    radius: 1
+    nms: 5
+    # used for loop detection
+    loop_window: 25
+    loop_thresh: 25.0  # only consider edge with avg flow < 50.0 pixels
+    loop_radius: 1
+    loop_nms: 12
+
+cam:
+  ### original camera parameters
+  H: 480
+  W: 640
+  fx: 577.590698
+  fy: 578.729797
+  cx: 318.905426
+  cy: 242.683609
+  png_depth_scale: 1000.0 #for depth image in png format
+  calibration_txt: ''
+  ### target/output camera settings, camera_size -> resize -> crop -> target_size
+  H_edge: 8
+  W_edge: 16
+  H_out: 240
+  W_out: 320
+
+rendering:
+  N_samples: 24
+  N_surface: 48
+  lindisp: False
+  perturb: 1.0
+
+data:
+  input_folder: ''
+  output: ''
+  video_length: ''
+
+meshing:
+  level_set: 0
+  resolution: 512  # change to 512 for higher resolution geometry
+  eval_rec: False
+  get_largest_components: False
+  remove_small_geometry_threshold: 0.2
+  n_points_to_eval: 200000
+  mesh_threshold_to_eval: 0.05
+  gt_mesh_path: ''
+  forecast_radius: 0 # >0 outside the image plane, <0 inside the image plane

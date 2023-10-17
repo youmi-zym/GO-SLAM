@@ -1,0 +1,16 @@
+inherit_from: configs/ETH3D/eth3d.yaml
+mode: 'rgbd'
+only_tracking: False
+mapping:
+  bound: [[-5,5],[-5, 5],[-5,5]]
+data:
+  input_folder: /home/yzhang/data/ETH3D/test/helmet/
+  output: /home/yzhang/exps/goslam/eth3d/test/helmet/
+cam:  #intrinsic is different per scene in TUM
+  fx: 726.28741455078
+  fy: 726.28741455078
+  cx: 354.6496887207
+  cy: 186.46566772461
+
+meshing:
+  resolution: 1024  # change to 2048 for higher resolution geometry
