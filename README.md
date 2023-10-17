@@ -84,6 +84,9 @@ GO-SLAM consists of three parallel threads: **front-end tracking**, **back-end t
 
 You can create an anaconda environment called `go-slam`. For linux, you need to install **libopenexr-dev** before creating the environment.
 ```bash
+
+git clone --recursive https://github.com/youmi-zym/GO-SLAM
+
 sudo apt-get install libopenexr-dev
     
 conda env create -f environment.yaml
@@ -112,7 +115,7 @@ Download the data from [Google Drive](https://drive.google.com/drive/folders/1RJ
 
 ```
 
-Mesh and corresponding evaluated metrics are available in OUT_DIR
+**Mesh and corresponding evaluated metrics are available in OUT_DIR.**
 
 
 ### ScanNet
