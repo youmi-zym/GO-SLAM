@@ -10,10 +10,10 @@ setup(
         CUDAExtension('droid_backends',
             include_dirs=[osp.join(ROOT, 'thirdparty/eigen')],
             sources=[
-                'src/droid.cpp', 
-                'src/droid_kernels.cu',
-                'src/correlation_kernels.cu',
-                'src/altcorr_kernel.cu',
+                'src/lib/droid.cpp',
+                'src/lib/droid_kernels.cu',
+                'src/lib/correlation_kernels.cu',
+                'src/lib/altcorr_kernel.cu',
             ],
             extra_compile_args={
                 'cxx': ['-O3'],

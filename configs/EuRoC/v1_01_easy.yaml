@@ -5,4 +5,4 @@ mapping:
   bound: [[-10, 10], [-10, 10], [-10, 10]]
 data:
   input_folder: /home/yzhang/data/EuRoC/V1_01_easy
-  output: /home/yzhang/exps/goslam/euroc/V1_02_easy
+  output: /home/yzhang/exps/goslam/euroc/V1_01_easy
