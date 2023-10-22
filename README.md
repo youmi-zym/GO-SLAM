@@ -104,7 +104,7 @@ python setup.py install
 Download the data from [Google Drive](https://drive.google.com/drive/folders/1RJr38jvmuIV717PCEcBkzV2qkqUua-Fx?usp=sharing), and then you can run:
 
 ```bash
-# please modify the OUT_DIR firstly in the script
+# please modify the OUT_DIR firstly in the script, and also DATA_ROOT in the config file
 # MODE can be [rgbd, mono], EXP_NAME is the experimental name you want
 
 ./evaluate_on_replica.sh MODE EXP_NAME
@@ -128,7 +128,7 @@ Please follow the data downloading procedure on [ScanNet](http://www.scan-net.or
 
 ```
   DATAROOT
-  └── scannet
+  └── ScanNet
       └── scans
           └── scene0000_00
               └── frames
@@ -154,7 +154,7 @@ Please follow the data downloading procedure on [ScanNet](http://www.scan-net.or
 
 Once the data is downloaded and set up properly, you can run:
 ```bash
-# please modify the OUT_DIR firstly in the script
+# please modify the OUT_DIR firstly in the script, and also DATA_ROOT in the config file
 # MODE can be [rgbd, mono], EXP_NAME is the experimental name you want
 
 ./evaluate_on_scannet.sh MODE EXP_NAME
@@ -162,7 +162,60 @@ Once the data is downloaded and set up properly, you can run:
 # for example
 
 ./evaluate_on_scannet.sh rgbd first_try
+
+# beside, you can generate video as shown in our project page by:
+
+./generate_video_on_scannet.sh rgbd first_try_on_video
 ```
+
+
+### EuRoC
+
+Please use the following from [script](https://github.com/youmi-zym/GO-SLAM/blob/main/scripts/download_euroc.sh) to download the EuRoC dataset. The GT trajectory can be downloaded [Google Drive](https://drive.google.com/drive/folders/1RJr38jvmuIV717PCEcBkzV2qkqUua-Fx?usp=sharing). 
+
+Please put the GT trajectory of each scene to the corresponding folder, as shown below:
+
+
+<details>
+  <summary>[Directory structure of EuRoC (click to expand)]</summary>
+
+DATAROOT is `./Datasets` by default. If a sequence (e.g., `MH_01_easy`) is stored in other places, please change the `input_folder` path in the config file or in the command line.
+
+```
+  DATAROOT
+  └── EuRoC
+     └── MH_01_easy
+         └── mav0
+             ├── cam0
+             ├── cam1
+             ├── imu0
+             ├── leica0
+             ├── state_groundtruth_estimate0
+             └── body.yaml
+         └── MH_01_easy.txt
+
+```
+</details>
+
+Then you can run:
+
+```bash
+# for data downloading:
+
+DATA_ROOT=path/to/folder
+mkdir $DATA_ROOT
+./scripts/download_euroc.sh $DATA_ROOT
+
+# please modify the OUT_DIR firstly in the script, and also DATA_ROOT in the config file
+# MODE can be [stereo, mono], EXP_NAME is the experimental name you want
+
+./evaluate_on_euroc.sh MODE EXP_NAME
+
+# for example
+
+./evaluate_on_euroc.sh stereo first_try
+```
+
 
 ## :art: Qualitative Results
 
