@@ -163,7 +163,7 @@ Once the data is downloaded and set up properly, you can run:
 
 ./evaluate_on_scannet.sh rgbd first_try
 
-# beside, you can generate video as shown in our project page by:
+# besides, you can generate video as shown in our project page by:
 
 ./generate_video_on_scannet.sh rgbd first_try_on_video
 ```
@@ -171,7 +171,7 @@ Once the data is downloaded and set up properly, you can run:
 
 ### EuRoC
 
-Please use the following from [script](https://github.com/youmi-zym/GO-SLAM/blob/main/scripts/download_euroc.sh) to download the EuRoC dataset. The GT trajectory can be downloaded [Google Drive](https://drive.google.com/drive/folders/1RJr38jvmuIV717PCEcBkzV2qkqUua-Fx?usp=sharing). 
+Please use the following [script](https://github.com/youmi-zym/GO-SLAM/blob/main/scripts/download_euroc.sh) to download the EuRoC dataset. The GT trajectory can be downloaded from [Google Drive](https://drive.google.com/drive/folders/1RJr38jvmuIV717PCEcBkzV2qkqUua-Fx?usp=sharing). 
 
 Please put the GT trajectory of each scene to the corresponding folder, as shown below:
 
