@@ -117,6 +117,8 @@ Download the data from [Google Drive](https://drive.google.com/drive/folders/1RJ
 
 **Mesh and corresponding evaluated metrics are available in OUT_DIR.**
 
+We also upload our predicted mesh on [Google Drive](https://drive.google.com/drive/folders/1RJr38jvmuIV717PCEcBkzV2qkqUua-Fx?usp=sharing). Enjoy!
+
 
 ### ScanNet
 Please follow the data downloading procedure on [ScanNet](http://www.scan-net.org/) website, and extract color/depth frames from the `.sens` file using this [code](https://github.com/ScanNet/ScanNet/blob/master/SensReader/python/reader.py).
@@ -168,6 +170,7 @@ Once the data is downloaded and set up properly, you can run:
 ./generate_video_on_scannet.sh rgbd first_try_on_video
 ```
 
+We also upload our predicted mesh on [Google Drive](https://drive.google.com/drive/folders/1RJr38jvmuIV717PCEcBkzV2qkqUua-Fx?usp=sharing). Enjoy!
 
 ### EuRoC
 
