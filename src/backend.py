@@ -140,7 +140,7 @@ class Backend:
 
     @torch.no_grad()
     def loop_ba(self, t_start, t_end, steps=6, motion_only=False, local_graph=None):
-        radius = self.backend_radius
+        radius = self.backend_loop_radius
         window = self.backend_loop_window
         max_factors = 8 * window
         nms = self.backend_loop_nms
