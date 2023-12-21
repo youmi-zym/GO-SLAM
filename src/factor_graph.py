@@ -160,16 +160,25 @@ class FactorGraph:
     @torch.cuda.amp.autocast(enabled=True)
     def rm_keyframe(self, ix):
         with self.video.get_lock():
+            self.video.timestamp[ix] = self.video.timestamp[ix+1]
             self.video.images[ix] = self.video.images[ix+1]
+            self.video.dirty[ix] = self.video.dirty[ix+1]
+            self.video.red[ix] = self.video.red[ix+1]
             self.video.poses[ix] = self.video.poses[ix+1]
+            self.video.poses_gt[ix] = self.video.poses_gt[ix+1]
             self.video.disps[ix] = self.video.disps[ix+1]
             self.video.disps_sens[ix] = self.video.disps_sens[ix+1]
+            self.video.disps_up[ix] = self.video.disps_up[ix+1]
+            self.video.depths_gt[ix] = self.video.depths_gt[ix+1]
             self.video.intrinsics[ix] = self.video.intrinsics[ix+1]
+            self.video.poses_filtered[ix] = self.video.poses_filtered[ix+1]
+            self.video.disps_filtered[ix] = self.video.disps_filtered[ix+1]
+            self.video.mask_filtered[ix] = self.video.mask_filtered[ix+1]
+            self.video.update_priority[ix] = self.video.update_priority[ix+1]
 
             self.video.nets[ix] = self.video.nets[ix+1]
             self.video.inps[ix] = self.video.inps[ix+1]
             self.video.fmaps[ix] = self.video.fmaps[ix+1]
-
 
         m = (self.ii_inac == ix) | (self.jj_inac == ix)
         self.ii_inac[self.ii_inac >= ix] -= 1
